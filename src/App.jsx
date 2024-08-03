@@ -9,7 +9,7 @@ function App() {
   let tokenPr = localStorage.getItem("token");
   let navigate = useNavigate();
   useEffect(() => {
-    if (tokenPr.includes("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1")) {
+    if (tokenPr?.includes("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1")) {
       navigate("/home");
     } else {
       navigate("/");
@@ -18,11 +18,8 @@ function App() {
   return (
     <>
       <Routes>
-        {tokenPr ? (
-          <Route path="/home" element={<HomePage />} />
-        ) : (
-          <Route path="/" element={<LoginPage />} />
-        )}
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<LoginPage />} />
       </Routes>
       <ToastContainer />
     </>
